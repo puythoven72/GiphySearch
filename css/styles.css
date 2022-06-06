@@ -1,0 +1,17 @@
+#giph-display-content {
+    margin: 10px;
+    padding: 20px;
+
+}
+
+
+.card {
+    width: 220px;
+    height: 220px;
+    background-color: blue;
+
+}
+
+input {
+    background: yellow;
+}
