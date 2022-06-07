@@ -5,13 +5,20 @@
 }
 
 
+
 .card {
-    width: 220px;
-    height: 220px;
-    background-color: blue;
+
+
+    height: 245px;
+    width: 245px;
+    margin: 5px;
 
 }
 
-input {
-    background: yellow;
+.item-img {
+    width: 180px;
+    height: 180px;
+    padding-top: 10px;
 }
+
+#giph-display {}
