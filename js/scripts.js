@@ -2,11 +2,11 @@ $(document).ready(function () {
     //Set up
     $("#gif").attr('checked', true);
     let searchPage = {};
-   
-    let KEY = "ygmzZcKV0JozYKh0yilDu8K7F2m3ho2r&q";
-    let giphyAPI = "https://api.giphy.com/v1/gifs/search?api_key="+KEY+"=SEARCH-IMAGE&limit=NUM-RETURN&offset=0&rating=g&lang=en";
 
-    let giphyStickerAPI = "https://api.giphy.com/v1/stickers/search?api_key="+KEY+"=SEARCH-IMAGE&limit=NUM-RETURN&offset=0&rating=g&lang=en"
+    let KEY = "ygmzZcKV0JozYKh0yilDu8K7F2m3ho2r&q";
+    let giphyAPI = "https://api.giphy.com/v1/gifs/search?api_key=" + KEY + "=SEARCH-IMAGE&limit=NUM-RETURN&offset=0&rating=g&lang=en";
+
+    let giphyStickerAPI = "https://api.giphy.com/v1/stickers/search?api_key=" + KEY + "=SEARCH-IMAGE&limit=NUM-RETURN&offset=0&rating=g&lang=en"
 
     searchPage.searchInput = $("#searchInput");
     searchPage.searchButton = $("#searchButton");
@@ -18,10 +18,14 @@ $(document).ready(function () {
 
     //The Main Function that will run all other methods to return data 
     searchPage.getData = async function () {
+
         let url;
         $("#giph-display-content").empty();
+        $("#return-count").empty();
         let searchVal = searchPage.searchInput.val();
+
         let searchLimit = searchPage.searchCount.val();
+
         if ($("input[name='type']:checked").val() === "Gif") {
             url = giphyAPI;
         } else {
@@ -32,20 +36,56 @@ $(document).ready(function () {
 
 
         let updatedURL = searchPage.apiInsertSearch(url, searchVal, searchLimit);
+
         let urlArray = [];
         urlArray = await searchPage.callAPI(updatedURL);
-
-
-       /* $.each(urlArray, function(index,value){
-            alert(value.title + " is it");
-        });*/
+        searchPage.typeRadioButton = urlArray.length;
+        /* $.each(urlArray, function(index,value){
+             alert(value.title + " is it");
+         });*/
         $(searchPage.searchInput).val("");
         $(searchPage.searchCount).val("");
-        $("#gif").attr('checked', true);
+        //   $(searchPage.typeRadioButton).attr('checked', true);
 
         searchPage.displayData(urlArray);
 
     };
+
+
+    searchPage.fieldCheck = function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation');
+
+
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        event.preventDefault();
+
+                        if (!isNaN($(searchPage.searchCount).val()) || $(searchPage.searchInput) !== "") {
+                            searchPage.getData();
+                        } else {
+
+                        }
+
+
+
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    };
+
+
+
+
 
 
     //Call the APIs and return the urls in an array
@@ -55,16 +95,15 @@ $(document).ready(function () {
             .then(function (response) {
                 $.each(response, function (key, val) {
                     console.log(val);
-                    
+
                     $.each(val.data, function (key, val) {
-                         let searchItem = {};
+                        let searchItem = {};
                         // console.log(val.images.downsized.url);
-                       
+
                         searchItem.title = val.title;
                         searchItem.url = val.images.downsized.url;
-                      //  urlArray.push(val.images.downsized.url);
                         urlArray.push(searchItem);
-                        
+
                     });
                 });
             })
@@ -77,7 +116,7 @@ $(document).ready(function () {
 
     //Replace the static strings in the url with the values placed on the front end page. Return updated string url
     searchPage.apiInsertSearch = function (url, searchItem, limitTo) {
-        alert(limitTo);
+
         let updatedURL = url.replace("SEARCH-IMAGE", searchItem);
         updatedURL = updatedURL.replace("NUM-RETURN", limitTo);
         return updatedURL;
@@ -89,28 +128,22 @@ $(document).ready(function () {
         let url = val.url;
 
         let card = document.createElement("div");
-       
+
         $(card).addClass("card text-center d-flex align-items-center");
-      //  $(card).css("max-width: 200px");
-        
-        
+
         let cardBody = document.createElement("article");
-         
+
         $(cardBody).append(val.title);
-      
-        
+
+
         $(cardBody).addClass("card-body");
 
         let image = new Image();
         image.src = url;
         $(image).addClass("img-fluid item-img");
 
-       /* $(image).css({
-            'width': '200px',
-            'height': '200px'
-        });*/
         $(card).append(image);
-         $(card).append($(cardBody));
+        $(card).append($(cardBody));
         return card;
 
     };
@@ -118,25 +151,17 @@ $(document).ready(function () {
 
 
     searchPage.displayData = function (urlArray) {
+        $("#return-count").text("Found " + urlArray.length + " items");
+
         let giphDisplayContent = $("#giph-display-content");
         let counter = 0;
         let giphDisplay = document.createElement("div");
         $(giphDisplay).attr("id", "giph-display");
         $(giphDisplay).addClass("row justify-content-sm-center text-center d-flex align-items-center");
+
         $.each(urlArray, function (index, val) {
             let card = searchPage.createRow(val);
             $(giphDisplay).append(card);
-
-            /*       if ((index) % 4 === 0) {
-                alert("true");
-                giphDisplay = document.createElement("div");
-                $(giphDisplay).attr("id", "giph-display");
-                $(giphDisplay).addClass("row");
-
-            } else {
-                giphDisplay = $('div.giph-display:last');
-            }
-*/
 
         });
 
@@ -145,6 +170,7 @@ $(document).ready(function () {
     };
 
 
-    searchPage.searchButton.click(searchPage.getData);
+    //  searchPage.searchButton.click(searchPage.getData);
+    searchPage.fieldCheck();
 
 });

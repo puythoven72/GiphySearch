@@ -1,3 +1,51 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    background: black;
+}
+
+nav {}
+
+.header {
+    border: 2px black solid;
+    margin-bottom: 10px;
+
+    background-color: #5D97F5;
+}
+
+.search-form {
+    border: 3px #5D97F5 solid;
+    padding: 20px;
+
+
+}
+
+.radio-div {
+    padding-top: 10px;
+    color: white;
+}
+
+
+
+
+.search-form .row {
+    margin-bottom: 10px;
+}
+
+
+#return-count {
+    color: white;
+}
+
+.main {
+    color: white;
+    margin: 20px 5px 0 5px;
+    border: 2px #5D97F5 solid;
+}
+
+
+
 #giph-display-content {
     margin: 10px;
     padding: 20px;
@@ -7,12 +55,12 @@
 
 
 .card {
-
+    background-color: #505E75;
 
     height: 245px;
     width: 245px;
     margin: 5px;
-
+    color: white;
 }
 
 .item-img {
@@ -22,3 +70,9 @@
 }
 
 #giph-display {}
+
+#searchButton {}
+
+.footer {
+    padding: 30px 0 30px 0;
+}
