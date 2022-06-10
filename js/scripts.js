@@ -12,6 +12,22 @@ $(document).ready(function () {
     searchPage.searchButton = $("#searchButton");
     searchPage.searchCount = $("#searchCount");
     searchPage.typeRadioButton = $('[name="type"]');
+    
+   /* var alterClass = function() {
+      alert("resizing");
+    var ww = document.body.clientWidth;
+    if (ww < 768) {
+      $('.xxx').removeClass('d-flex justify-content-center');
+    } else if (ww >= 768) {
+      $('.xxx').addClass('d-flex justify-content-center');
+    };
+  };
+  $(window).resize(function(){
+    alterClass();
+  });
+  //Fire it when the page first loads:
+  alterClass();
+*/
 
 
 
