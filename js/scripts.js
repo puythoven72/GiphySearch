@@ -3,7 +3,7 @@ $(document).ready(function () {
     $("#gif").attr('checked', true);
     let searchPage = {};
 
-    let KEY = "ygmzZcKV0JozYKh0yilDu8K7F2m3ho2r&q";
+    let KEY = "";
     let giphyAPI = "https://api.giphy.com/v1/gifs/search?api_key=" + KEY + "=SEARCH-IMAGE&limit=NUM-RETURN&offset=0&rating=g&lang=en";
 
     let giphyStickerAPI = "https://api.giphy.com/v1/stickers/search?api_key=" + KEY + "=SEARCH-IMAGE&limit=NUM-RETURN&offset=0&rating=g&lang=en"
@@ -173,7 +173,7 @@ $(document).ready(function () {
         let counter = 0;
         let giphDisplay = document.createElement("div");
         $(giphDisplay).attr("id", "giph-display");
-        $(giphDisplay).addClass("row justify-content-sm-center text-center d-flex align-items-center");
+        $(giphDisplay).addClass("row d-flex justify-content-center align-items-center  ");
 
         $.each(urlArray, function (index, val) {
             let card = searchPage.createRow(val);
