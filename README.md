@@ -72,7 +72,7 @@ Open http://localhost:1234 or http://localhost:1234/index.html in your browser
 
 ![image](https://user-images.githubusercontent.com/100236688/173899235-07aa53c6-41aa-49e7-802d-bcdcbf9cef99.png)
 
-![image](https://user-images.githubusercontent.com/100236688/173899235-07aa53c6-41aa-49e7-802d-bcdcbf9cef99.png)
+![image](https://user-images.githubusercontent.com/100236688/173902117-8b7cbea0-1082-4332-8d23-179f43059d25.png)
 
 
 ## Authors
