@@ -5,7 +5,9 @@ body {
     background: black;
 }
 
-form {}
+form {
+      background-color: #505E75;
+}
 
 .mobile-search {
     display: none;
@@ -14,14 +16,29 @@ form {}
 
 nav {
     font-family: 'Roboto', sans-serif;
-    font-weight: bold
+    font-weight: bold;
+
 }
 
 .header {
     border: 2px black solid;
     margin-bottom: 10px;
-
     background-color: #5D97F5;
+}
+
+
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 35px;
+    color: white !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1)!important;
+}
+
+
+a {
+    color: white !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1)!important;
 }
 
 .search-form {
@@ -31,20 +48,17 @@ nav {
 
 
 .radio-div {
-
     color: white;
     padding-bottom: 20px;
     padding-left: 20px;
-
 }
 
 
 
 
-/*input {
+input {
     margin-bottom: 20px;
-
-}*/
+}
 
 
 
@@ -63,8 +77,11 @@ nav {
 #giph-display-content {
     margin: 10px;
     padding: 20px;
+}
 
-
+#giph-display-content h1 {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: underline;
 }
 
 .amt-input {
@@ -75,7 +92,6 @@ nav {
 
 .card {
     background-color: #505E75;
-
     height: 245px;
     width: 245px;
     margin: 5px;
@@ -88,18 +104,15 @@ nav {
     padding-top: 10px;
 }
 
-#giph-display {}
 
-#searchButton {}
+
+#searchButton {
+    background-color: #5D97F5 ;
+}
 
 .footer {
     padding: 30px 0 30px 0;
 }
-
-/*.test {
-    width: 100%;
-}*/
-
 
 
 @media only screen and (max-width: 850px) {
@@ -132,12 +145,12 @@ nav {
     .radio-div {
         padding-left: 20%;
     }
-    
+
     @media only screen and (max-width: 500px) {
 
-        #giph-display{
+        #giph-display {
             text-align: center;
         }
 
-   
-}
+
+    }
