@@ -77,12 +77,9 @@
          await axios.get(url)
              .then(function (response) {
                  $.each(response, function (key, val) {
-                     console.log(val);
-
                      $.each(val.data, function (key, val) {
                          let searchItem = {};
-                         // console.log(val.images.downsized.url);
-
+                    
                          searchItem.title = val.title;
                          searchItem.url = val.images.downsized.url;
                          urlArray.push(searchItem);
